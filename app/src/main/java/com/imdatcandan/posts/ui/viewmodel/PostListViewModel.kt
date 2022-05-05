@@ -16,9 +16,9 @@ class PostListViewModel(
     private val _postListUiState = mutableStateOf(UiState<List<Post>>())
     val postListUiState: State<UiState<List<Post>>> = _postListUiState
 
-   /* init {
+    init {
         fetchPosts()
-    }*/
+    }
 
     fun fetchPosts() {
         viewModelScope.launch {

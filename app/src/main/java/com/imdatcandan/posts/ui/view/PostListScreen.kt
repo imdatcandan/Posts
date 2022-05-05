@@ -25,7 +25,6 @@ internal fun PostListScreen(
     viewModel: PostListViewModel = getViewModel(),
     onActionClick: (Int) -> Unit
 ) {
-    viewModel.fetchPosts()
     TopBar(title = R.string.posts) {
         observeUiStateChanges(viewModel, onActionClick)
     }

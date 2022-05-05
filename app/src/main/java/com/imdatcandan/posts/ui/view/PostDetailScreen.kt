@@ -1,16 +1,16 @@
 package com.imdatcandan.posts.ui.view
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.unit.sp
 import com.imdatcandan.posts.R
 import com.imdatcandan.posts.model.PostDetail
 import com.imdatcandan.posts.ui.component.ErrorDialog
 import com.imdatcandan.posts.ui.component.ProgressBar
 import com.imdatcandan.posts.ui.component.TopBar
 import com.imdatcandan.posts.ui.viewmodel.PostDetailViewModel
-import com.imdatcandan.posts.ui.viewmodel.PostListViewModel
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -28,10 +28,12 @@ internal fun PostDetailScreen(
 @Composable
 fun PostDetail(postDetail: PostDetail) {
     Column {
-        Text(postDetail.title)
-        Text(postDetail.body)
-        Text(postDetail.name)
-        Text(postDetail.userName)
+        Text(
+            "Title= ${postDetail.title}", fontStyle = FontStyle.Italic, fontSize = 24.sp
+        )
+        Text("Body= ${postDetail.body}")
+        Text("Name= ${postDetail.name}")
+        Text("Username= ${postDetail.userName}")
     }
 }
 
