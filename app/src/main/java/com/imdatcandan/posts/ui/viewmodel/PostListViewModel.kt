@@ -27,7 +27,7 @@ class PostListViewModel(
                 val posts = postRepository.getPostList()
                 val subPosts = posts.map {
                     it.copy(
-                        body = it.body.substring(0, min(120, it.body.length))
+                        body = limitBodyByMaxCharacter(it.body)
                     )
                 }
                 _postListUiState.value = UiState(data = subPosts)
@@ -36,5 +36,14 @@ class PostListViewModel(
                     UiState(error = exception.message ?: "Error!", isRetryRequired = true)
             }
         }
+    }
+
+    private fun limitBodyByMaxCharacter(body: String): String {
+        return body.substring(MIN_CHARACTER_LIMIT, min(MAX_CHARACTER_LIMIT, body.length))
+    }
+
+    private companion object {
+        private const val MIN_CHARACTER_LIMIT = 0
+        private const val MAX_CHARACTER_LIMIT = 120
     }
 }
